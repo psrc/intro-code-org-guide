@@ -1,0 +1,67 @@
+---
+title: "Code Organization"
+subtitle: "Functions, Lists, and loops"
+date: "June 28, 2023"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r xaringan-extra, echo=FALSE, warning=FALSE}
+library(xaringanExtra)
+library(emo)
+use_tile_view()
+use_panelset()
+use_tachyons()
+```
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#1c5253",
+  header_font_google = google_font("Poppins"),
+  text_font_google   = google_font("Poppins", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+
+# Topics
+
+.bg-near-white.b--gray.ba.bw2.br3.shadow-5.ph4[
+Functions
+]
+
+.bg-near-white.b--gray.ba.bw2.br3.shadow-5.ph4[
+Lists
+]
+
+.bg-near-white.b--gray.ba.bw2.br3.shadow-5.ph4.mt2[
+Loops `r ji('repeat_button')`
+]
+
+---
+
+# Functions
+
+---
+
+# Lists
+
+---
+
+# Loops
+
+---
+
+
+

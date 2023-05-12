@@ -3,10 +3,15 @@ title: "Code Organization"
 description: |
   Code Organization
 output_dir: "docs"
+include: ["slides/"]
 navbar:
   right:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
+    - text: "Tools for Organizing"
+      menu:
+        - text: "Lists"
+          href: lists.html
+    - text: "Slides"
+      href: slides.html
 output: distill::distill_article

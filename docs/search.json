@@ -6,15 +6,29 @@
       "description": "Some additional details about the website",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-05-11T10:39:14-07:00"
+      "last_modified": "2023-05-11T12:02:29-07:00"
     },
     {
       "path": "index.html",
       "title": "Code Organization",
-      "description": "Welcome to the website. I hope you enjoy it!\n",
+      "description": "Functions, Lists, and Loops\n",
       "author": [],
       "contents": "\r\n\r\n\r\n\r\n",
-      "last_modified": "2023-05-11T10:39:16-07:00"
+      "last_modified": "2023-05-11T12:02:30-07:00"
+    },
+    {
+      "path": "lists.html",
+      "title": "Lists",
+      "description": "A new article created using the Distill format.\n",
+      "author": [
+        {
+          "name": "Nora Jones",
+          "url": "https://example.com/norajones"
+        }
+      ],
+      "date": "`r Sys.Date()`",
+      "contents": "\r\nDistill is a publication format for scientific and technical writing, native to the web.\r\nLearn more about using Distill for R Markdown at https://rstudio.github.io/distill.\r\n\r\n\r\n\r\n",
+      "last_modified": "2023-05-11T12:02:30-07:00"
     }
   ],
   "collections": []

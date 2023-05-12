@@ -1,0 +1,106 @@
+---
+title: "Code Organization"
+subtitle: "Functions, Lists, and loops"
+date: "June 28, 2023"
+output:
+  xaringan::moon_reader:
+    css: xaringan-themer.css
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: 16:9
+---
+
+```{r xaringan-extra, echo=FALSE, warning=FALSE}
+library(xaringanExtra)
+library(emo)
+use_tile_view()
+use_panelset()
+use_tachyons()
+```
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-themer, include=FALSE, warning=FALSE}
+library(xaringanthemer)
+style_mono_accent(
+  base_color = "#1c5253",
+  header_font_google = google_font("Poppins"),
+  text_font_google   = google_font("Poppins", "300", "300i"),
+  code_font_google   = google_font("Fira Mono")
+)
+```
+
+.pull-left[
+## Why organize code?
+
+Lots of benefits
+
+- potentially less lines of code
+
+- readability (yourself & others)
+
+- ease in debugging
+
+- memory space
+
+- less variables to name!
+]
+
+
+.pull-right[
+## Tools for organizing
+
+.bg-near-white.b--gray.ba.bw2.br3.shadow-5.ph4[
+Functions
+]
+
+.bg-near-white.b--gray.ba.bw2.br3.shadow-5.ph4[
+Lists
+]
+
+.bg-near-white.b--gray.ba.bw2.br3.shadow-5.ph4.mt2[
+Loops `r ji('repeat_button')`
+]
+]
+
+---
+class: inverse, center, middle
+
+
+# Functions
+
+---
+
+## Functions
+
+.pull-left[
+- Can reduce repetitive code
+
+- Even a one-time use function is a good way to break up code
+
+- A mini environment within the function. Variable names used inside the function won't affect global environment variables. Less names to think or keep track of!
+]
+
+.pull-right[
+![](images/ahorst_function.png)
+]
+
+---
+
+# Lists
+
+https://r4ds.hadley.nz/base-r#lists
+
+---
+
+# Loops
+
+---
+
+
+
