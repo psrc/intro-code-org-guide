@@ -88,29 +88,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Code Organization</title>
+  <title>Code Organization: Functions</title>
 
-  <meta property="description" itemprop="description" content="Functions, Lists, and Loops"/>
+  <meta property="description" itemprop="description" content="Repeating things? Let&#39;s functionalize it!"/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Code Organization"/>
+  <meta property="og:title" content="Code Organization: Functions"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Functions, Lists, and Loops"/>
+  <meta property="og:description" content="Repeating things? Let&#39;s functionalize it!"/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Code Organization"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Code Organization"/>
-  <meta property="twitter:description" content="Functions, Lists, and Loops"/>
+  <meta property="twitter:title" content="Code Organization: Functions"/>
+  <meta property="twitter:description" content="Repeating things? Let&#39;s functionalize it!"/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","site"]}},"value":[{"type":"character","attributes":{},"value":["Code Organization"]},{"type":"character","attributes":{},"value":["Functions, Lists, and Loops\n"]},{"type":"character","attributes":{},"value":["distill::distill_website"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Functions"]},{"type":"character","attributes":{},"value":["Repeating things? Let's functionalize it!\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[4]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2094,7 +2094,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Code Organization","description":"Functions, Lists, and Loops","authors":[]}
+{"title":"Functions","description":"Repeating things? Let's functionalize it!","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2126,14 +2126,113 @@ Tools for Organizing
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Code Organization</h1>
+<h1>Functions</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Functions, Lists, and Loops</p></p>
+<p><p>Repeating things? Let’s functionalize it!</p></p>
 </div>
 
 
 <div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#whats-in-a-function">What’s in a function?</a></li>
+<li><a href="#lets-create-one">Let’s create one</a>
+<ul>
+<li><a href="#call-the-function">Call the function</a></li>
+</ul></li>
+<li><a href="#benefits-of-creating-functions">Benefits of creating functions</a></li>
+</ul>
+</nav>
+</div>
+<p>When we see code being repeated more than once, functions are a great way to reduce duplication. Even if we call a function only once, they can be a nice way to break up large complicated processes.</p>
+<h1 id="whats-in-a-function">What’s in a function?</h1>
+<ol type="1">
+<li>The Formals</li>
+<li>The Body</li>
+<li>The Environment</li>
+</ol>
+<p>To define a function here’s the basic skeleton</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>my_function_name</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span>  </span>
+<span><span class='op'>}</span></span></code></pre>
+</div>
+</div>
+<h1 id="lets-create-one">Let’s create one</h1>
+<p>Suppose we’d like to do some cleaning to each CHAS table in the same manner. Let’s create one that does the following:</p>
+<ul>
+<li>filter for PSRC counties</li>
+<li>pivot longer (so columns that start with ‘T’ are not across the table)</li>
+<li>dissect the column containing the former ‘T…’ hearders into three columns
+<ul>
+<li>create ‘table’ field</li>
+<li>create a ‘type’ field to identify whether values are ‘est’ or ‘moe’</li>
+<li>create a ‘sort’ field</li>
+</ul></li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Read-in one file as a data frame</span></span>
+<span><span class='va'>file_01</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>'data'</span>, <span class='st'>'050'</span>, <span class='st'>'Table9.csv'</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># define the skeleton of our function</span></span>
+<span><span class='co'># add table as a parameter</span></span>
+<span><span class='va'>clean_table</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>table</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span>  </span>
+<span><span class='op'>}</span></span></code></pre>
+</div>
+</div>
+<p>Fill in the body with the argument to clean</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>clean_table</span> <span class='op'>&lt;-</span> <span class='kw'>function</span><span class='op'>(</span><span class='va'>table</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span>  <span class='va'>table</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>st</span> <span class='op'>==</span> <span class='fl'>53</span> <span class='op'>&amp;</span> <span class='va'>cnty</span> <span class='op'><a href='https://rdrr.io/r/base/match.html'>%in%</a></span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'033'</span>, <span class='st'>'035'</span>, <span class='st'>'053'</span>, <span class='st'>'061'</span><span class='op'>)</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>    <span class='fu'><a href='https://tidyr.tidyverse.org/reference/pivot_longer.html'>pivot_longer</a></span><span class='op'>(</span>cols <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_subset.html'>str_subset</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>table</span><span class='op'>)</span>, <span class='st'>"^T.*"</span><span class='op'>)</span>, </span>
+<span>                 names_to <span class='op'>=</span> <span class='st'>'header'</span>, </span>
+<span>                 values_to <span class='op'>=</span> <span class='st'>'value'</span><span class='op'>)</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> </span>
+<span>    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span><span class='op'>(</span>table <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_extract.html'>str_extract</a></span><span class='op'>(</span><span class='va'>header</span>, <span class='st'>"^T\\d*(?=_)"</span><span class='op'>)</span>,</span>
+<span>           type <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_extract.html'>str_extract</a></span><span class='op'>(</span><span class='va'>header</span>, <span class='st'>"(?&lt;=_)\\w{3}"</span><span class='op'>)</span>,</span>
+<span>           sort <span class='op'>=</span> <span class='fu'><a href='https://stringr.tidyverse.org/reference/str_extract.html'>str_extract</a></span><span class='op'>(</span><span class='va'>header</span>, <span class='st'>"\\d+$"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='op'>}</span></span></code></pre>
+</div>
+</div>
+<aside>
+Functions will generally return the last evaluated expression. With the piping (<code>%&gt;%</code>) in dplyr, our example is essentially a one liner expression. You can always add <code>return(&lt;name of object&gt;)</code> to explicitly return a specific object whenever your function is called.
+</aside>
+<h2 id="call-the-function">Call the function</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>t9</span> <span class='op'>&lt;-</span> <span class='fu'>clean_table</span><span class='op'>(</span><span class='va'>file_01</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>Try with other files</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>file_02</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>'data'</span>, <span class='st'>'050'</span>, <span class='st'>'Table10.csv'</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='va'>file_03</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>'data'</span>, <span class='st'>'050'</span>, <span class='st'>'Table11.csv'</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>t10</span> <span class='op'>&lt;-</span> <span class='fu'>clean_table</span><span class='op'>(</span><span class='va'>file_02</span><span class='op'>)</span></span>
+<span><span class='va'>t11</span> <span class='op'>&lt;-</span> <span class='fu'>clean_table</span><span class='op'>(</span><span class='va'>file_03</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>If we forgot a step in the cleaning process, we can always edit the function and re-run our script</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Let's make this edit to our function that will convert the sort column from string to numeric</span></span>
+<span><span class='va'>sort</span> <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/numeric.html'>as.numeric</a></span><span class='op'>(</span><span class='fu'><a href='https://stringr.tidyverse.org/reference/str_extract.html'>str_extract</a></span><span class='op'>(</span><span class='va'>header</span>, <span class='st'>"\\d+$"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<h1 id="benefits-of-creating-functions">Benefits of creating functions</h1>
+<ul>
+<li>Easier editing of code</li>
+<li>Reduce redundancy</li>
+<li>Break long processes into chunks</li>
+</ul>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

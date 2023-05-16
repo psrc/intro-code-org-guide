@@ -16,6 +16,7 @@ output:
 ```{r xaringan-extra, echo=FALSE, warning=FALSE}
 library(xaringanExtra)
 library(emo)
+library(fontawesome)
 use_tile_view()
 use_panelset()
 use_tachyons()
@@ -35,7 +36,25 @@ style_mono_accent(
 )
 ```
 
-# Topics
+.pull-left[
+## Why organize code?
+
+Lots of benefits
+
+- potentially less lines of code
+
+- readability (yourself & others)
+
+- ease in debugging
+
+- memory space
+
+- less variables to name!
+]
+
+
+.pull-right[
+## Tools for organizing
 
 .bg-near-white.b--gray.ba.bw2.br3.shadow-5.ph4[
 Functions
@@ -48,19 +67,90 @@ Lists
 .bg-near-white.b--gray.ba.bw2.br3.shadow-5.ph4.mt2[
 Loops `r ji('repeat_button')`
 ]
+]
 
 ---
+class: inverse, center, middle
+
 
 # Functions
 
 ---
 
+## Functions
+
+.pull-left[
+- Can reduce repetitive code
+
+- Even a one-time use function is a good way to break up code
+
+- A mini environment within the function. Variable names used inside the function won't affect global environment variables. Less names to think or keep track of!
+]
+
+.pull-right[
+![](images/ahorst_function.png)
+]
+
+---
+
 # Lists
+
+- A fancy container of stuff!
+
+- Can help reduce number of objects in the global environment
+
+- Fun when used with loops `r ji('party_popper')`
+
+.pull-left[
+### Vectors
+
+- Vectors group individual values of the same data type 
+  - `c('a', 'b', 'c)`
+
+- It will force everything to be the same data type and will try to flatten more complex types (e.g. data frames)
+]
+
+.pull-right[
+### Lists
+- Lists can store different objects or individual values 
+  - `list('a', my_dataframe, another_list)`
+
+- Stores any types (or a mix of types) and retains their structure.
+
+]
+
+---
+
+# Accessing a list
+
+Hadley Wickham's pepper example<sup>1</sup>:
+
+1. `my_list`: The whole list and all its elements
+2. `my_list[1]`: A container of the first element (name of element and the data/value)
+3. `my_list[[1]]`: The actual data
+
+![](https://r4ds.hadley.nz/diagrams/pepper.png)
+
+.footnote[[1] https://r4ds.hadley.nz/base-r#lists]
 
 ---
 
 # Loops
 
+- Reduce redundant code when applying the same actions to multiple things
+
+Examples: 
+- Iterate through a list of your objects applying the same changes
+
+- Iterate through a list of files, consolidating into one data frame
+
+.flex.justify-center[
+<img src="images/recycle.svg" width="60px" height="60px">
+
+.mh3[<img src="images/plus.svg" width="40px" height="40px">]
+
+<img src="images/list.svg" width="60px" height="60px">
+]    
 ---
 
 

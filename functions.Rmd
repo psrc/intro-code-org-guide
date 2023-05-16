@@ -1,0 +1,106 @@
+---
+title: "Functions"
+description: |
+  Repeating things? Let's functionalize it!
+output: 
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(here)
+library(tidyverse)
+```
+
+When we see code being repeated more than once, functions are a great way to reduce duplication. Even if we call a function only once, they can be a nice way to break up large complicated processes.
+
+# What's in a function?
+
+1. The Formals
+2. The Body
+3. The Environment
+
+To define a function here's the basic skeleton
+
+```{r, eval=FALSE}
+my_function_name <- function() {
+  
+}
+
+```
+
+# Let's create one
+
+Suppose we'd like to do some cleaning to each CHAS table in the same manner. Let's create one that does the following: 
+
+  - filter for PSRC counties
+  - pivot longer (so columns that start with 'T' are not across the table)
+  - dissect the column containing the former 'T...' hearders into three columns
+      - create 'table' field
+      - create a 'type' field to identify whether values are 'est' or 'moe'
+      - create a 'sort' field
+      
+```{r eval=FALSE}
+# Read-in one file as a data frame
+file_01 <- read_csv(here('data', '050', 'Table9.csv'))
+
+# define the skeleton of our function
+# add table as a parameter
+clean_table <- function(table) {
+  
+}
+
+```
+
+Fill in the body with the argument to clean
+
+```{r eval=FALSE}
+clean_table <- function(table) {
+  table %>% 
+    filter(st == 53 & cnty %in% c('033', '035', '053', '061')) %>% 
+    pivot_longer(cols = str_subset(colnames(table), "^T.*"), 
+                 names_to = 'header', 
+                 values_to = 'value') %>% 
+    mutate(table = str_extract(header, "^T\\d*(?=_)"),
+           type = str_extract(header, "(?<=_)\\w{3}"),
+           sort = str_extract(header, "\\d+$"))
+}
+```
+
+<aside>
+Functions will generally return the last evaluated expression. With the piping (`%>%`) in dplyr, our example is essentially a one liner expression. You can always add `return(<name of object>)` to explicitly return a specific object whenever your function is called.
+</aside>
+
+## Call the function
+
+```{r eval=FALSE}
+t9 <- clean_table(file_01)
+```
+
+Try with other files
+
+```{r eval=FALSE}
+file_02 <- read_csv(here('data', '050', 'Table10.csv'))
+file_03 <- read_csv(here('data', '050', 'Table11.csv'))
+
+t10 <- clean_table(file_02)
+t11 <- clean_table(file_03)
+```
+
+If we forgot a step in the cleaning process, we can always edit the function and re-run our script
+
+```{r eval=FALSE}
+# Let's make this edit to our function that will convert the sort column from string to numeric
+sort = as.numeric(str_extract(header, "\\d+$"))
+```
+
+# Benefits of creating functions
+
+- Easier editing of code
+- Reduce redundancy
+- Break long processes into chunks
+
+

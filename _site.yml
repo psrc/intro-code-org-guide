@@ -10,8 +10,9 @@ navbar:
       href: index.html
     - text: "Tools for Organizing"
       menu:
+        - text: "Functions"
+          href: functions.html
         - text: "Lists"
           href: lists.html
-    - text: "Slides"
-      href: slides.html
+          
 output: distill::distill_article
