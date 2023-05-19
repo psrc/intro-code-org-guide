@@ -1,0 +1,118 @@
+---
+title: "Loops"
+description: |
+  Let the machine do it!
+
+output: 
+  distill::distill_article:
+    toc: true
+    toc_float: true
+    toc_depth: 4
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We could explicitly call the function as many times need be to clean the tables we're interested in.
+
+```{r eval=FALSE}
+table9 <- clean_table(file_01)
+
+table10 <- clean_table(file_02)
+
+table11 <- clean_table(file_03)
+```
+
+But that would be redundant! There would be three extra lines of code and three extra variable names in your global environment to keep track of.
+
+# Anatomy
+
+A `for` loop has three parts:
+
+1. The Output: where the stuff will be stored
+2. The Sequence: code within `()` that shows what to loop over
+3. The Body: code within `{}` that does the work
+
+## Sequence
+
+The sequence lies within the `()`. It will follow this structure:
+(<variable name of your choice> in <list or vector>)
+
+The sequence tells the machine what to loop over. The variable name will represent a single element within the list or vector.
+
+In the example below, with every iteration, `df` will be a counter and represent a different data frame in `l`
+
+```{r eval=FALSE}
+l <- list(file_01, file_02, file_03)
+
+# for every data frame (df) in list (l)...
+for(df in l) {
+  
+}
+```
+
+Try printing the `head()` of each data frame in our list
+
+```{r eval=FALSE}
+l <- list(file_01, file_02, file_03) 
+
+for(df in l) {
+  print(head(df))
+}
+
+```
+
+Try printing a version of each data frame with `clean_table()`
+
+```{r eval=FALSE}
+for(df in l) {
+  print(clean_table(df))
+}
+```
+
+## Output
+Now instead of printing stuff, let's store stuff in a list!
+
+A way to use both lists and loops is to read in data. Let's create a loop to read-in csvs 1 through 11 and store them into a list.
+
+- Initiate the Output (`dfs`) to store the end result (data frames from csvs)
+- Construct the sequence you'll be looping over (`csv`) (file names of csvs)
+- Read csv (`t`)
+```{r}
+dfs <- list()
+
+csv <- paste0('Table', 1:11, '.csv')
+
+for(c in csv) {
+  t <- read_csv(here('data', '050', c))
+  dfs[[c]] <- t
+}
+```
+
+
+
+
+## Sequencing alternatives
+
+
+```{r eval=FALSE}
+
+for(df in 1:length(l)) {
+  
+}
+
+```
+
+# Alter the Flow
+
+## Break
+
+## Next
+
+
+
+
+
+
+

@@ -7,12 +7,19 @@ site: distill::distill_website
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-
-# Learn more about creating websites with Distill at:
-# https://rstudio.github.io/distill/website.html
-
-# Learn more about publishing to GitHub Pages at:
-# https://rstudio.github.io/distill/publish_website.html#github-pages
+library(emo)
 
 ```
 
+```{r embed-xaringan, echo=FALSE, fig.cap="[Slides](slides/index.html)"}
+xaringanExtra::embed_xaringan(url = "slides/slides.html", ratio = "16:9")
+```
+
+<aside>
+Shortcut Keys
+
+- `f`: full-screen
+- `Esc`: exit full-screen
+- `o`: tile view
+- `r ji('left_arrow')` `r ji('right_arrow')`: advance slide
+</aside>

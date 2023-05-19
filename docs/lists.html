@@ -2134,6 +2134,50 @@ Tools for Organizing
 
 
 <div class="d-article">
+<p>Lists can not only store a mix of data types, but also more complex data (e.g. data frames, even lists themselves!). It’s an ideal option for a group of similar complex data, and decently sets us up for iteration! So in preparation for <code>for</code> loops, let’s examine lists and how to extract data from them.</p>
+<h1 id="create-a-list">Create a list</h1>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># an empty list</span></span>
+<span><span class='va'>l</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span> </span>
+<span></span>
+<span><span class='co'># populated with objects</span></span>
+<span><span class='va'>l</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>file_01</span>, <span class='va'>file_02</span>, <span class='va'>file_03</span><span class='op'>)</span> </span></code></pre>
+</div>
+</div>
+<h1 id="anatomy">Anatomy</h1>
+<p>There’s several layers to a list, like a container within a container. To extract a specific element’s data, use double brackets instead one.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>l</span> <span class='co'># the whole list and all its elements</span></span>
+<span></span>
+<span><span class='va'>l</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='co'># the first element in its container; contains the name/index of element and the data</span></span>
+<span></span>
+<span><span class='va'>l</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span> <span class='co'># the data of the first element</span></span></code></pre>
+</div>
+</div>
+<p>Hadley Wickham’s pepper analogy</p>
+<p><img src="slides/images/hwickham-pepper.png" /></p>
+<h2 id="names">Names</h2>
+<p>Like vectors, lists can also be named</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>l</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'table9'</span>, <span class='st'>'table10'</span>, <span class='st'>'table11'</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>Now you can also access the data of a specific element by name using $ or [[]]</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>l</span><span class='op'>$</span><span class='va'>table9</span></span>
+<span></span>
+<span><span class='va'>l</span><span class='op'>[[</span><span class='st'>'table9'</span><span class='op'>]</span><span class='op'>]</span></span>
+<span></span>
+<span><span class='co'># saving processes back into the list</span></span>
+<span><span class='va'>l</span><span class='op'>$</span><span class='va'>table9</span> <span class='op'>&lt;-</span> <span class='va'>l</span><span class='op'>$</span><span class='va'>table9</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>cnty</span> <span class='op'>==</span> <span class='st'>'033'</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>Now if you extract an element with only one <code>[]</code> like <code>l[1]</code>, you can see that it’s a container holding the name of the element and the data itself.</p>
+<p><img src="slides/images/list-one-bracket.png" /></p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->
