@@ -88,29 +88,29 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 
 
   <!--radix_placeholder_meta_tags-->
-  <title>Code Organization: Lists</title>
+  <title>Code Organization: Loops</title>
 
-  <meta property="description" itemprop="description" content="Lists are our friend!"/>
+  <meta property="description" itemprop="description" content="Over and Over again..."/>
 
 
 
   <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
-  <meta property="og:title" content="Code Organization: Lists"/>
+  <meta property="og:title" content="Code Organization: Loops"/>
   <meta property="og:type" content="article"/>
-  <meta property="og:description" content="Lists are our friend!"/>
+  <meta property="og:description" content="Over and Over again..."/>
   <meta property="og:locale" content="en_US"/>
   <meta property="og:site_name" content="Code Organization"/>
 
   <!--  https://dev.twitter.com/cards/types/summary -->
   <meta property="twitter:card" content="summary"/>
-  <meta property="twitter:title" content="Code Organization: Lists"/>
-  <meta property="twitter:description" content="Lists are our friend!"/>
+  <meta property="twitter:title" content="Code Organization: Loops"/>
+  <meta property="twitter:description" content="Over and Over again..."/>
 
   <!--/radix_placeholder_meta_tags-->
   <!--radix_placeholder_rmarkdown_metadata-->
 
   <script type="text/json" id="radix-rmarkdown-metadata">
-  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Lists"]},{"type":"character","attributes":{},"value":["Lists are our friend!\n"]},{"type":"character","attributes":{},"value":["distill::distill_article"]}]}
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","output"]}},"value":[{"type":"character","attributes":{},"value":["Loops"]},{"type":"character","attributes":{},"value":["Over and Over again...\n"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["toc","toc_float","toc_depth"]}},"value":[{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"integer","attributes":{},"value":[4]}]}]}]}
   </script>
   <!--/radix_placeholder_rmarkdown_metadata-->
   <!--radix_placeholder_navigation_in_header-->
@@ -2094,7 +2094,7 @@ code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
 <!--radix_placeholder_front_matter-->
 
 <script id="distill-front-matter" type="text/json">
-{"title":"Lists","description":"Lists are our friend!","authors":[]}
+{"title":"Loops","description":"Over and Over again...","authors":[]}
 </script>
 
 <!--/radix_placeholder_front_matter-->
@@ -2127,58 +2127,135 @@ Tools for Organizing
 <!--/radix_placeholder_site_before_body-->
 
 <div class="d-title">
-<h1>Lists</h1>
+<h1>Loops</h1>
 <!--radix_placeholder_categories-->
 <!--/radix_placeholder_categories-->
-<p><p>Lists are our friend!</p></p>
+<p><p>Over and Over again…</p></p>
 </div>
 
 
 <div class="d-article">
-<p>Lists can not only store a mix of data types, but also more complex data (e.g. data frames, even lists themselves!). It’s an ideal option for a group of similar complex data, and decently sets us up for iteration! So in preparation for <code>for</code> loops, let’s examine lists and how to extract data from them.</p>
-<h1 id="create-a-list">Create a list</h1>
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#anatomy" id="toc-anatomy">Anatomy</a>
+<ul>
+<li><a href="#sequence" id="toc-sequence">Sequence</a></li>
+<li><a href="#output" id="toc-output">Output</a></li>
+</ul></li>
+<li><a href="#put-it-all-together" id="toc-put-it-all-together">Put it all together</a>
+<ul>
+<li><a href="#sequencing-alternatives" id="toc-sequencing-alternatives">Sequencing alternatives</a></li>
+</ul></li>
+<li><a href="#alter-the-flow" id="toc-alter-the-flow">Alter the Flow</a>
+<ul>
+<li><a href="#break" id="toc-break">Break</a></li>
+<li><a href="#next" id="toc-next">Next</a></li>
+</ul></li>
+</ul>
+</nav>
+</div>
+<p>We could explicitly call the function as many times need be to clean the tables we’re interested in.</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># an empty list</span></span>
-<span><span class='va'>l</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span> </span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>table9</span> <span class='op'>&lt;-</span> <span class='fu'>clean_table</span><span class='op'>(</span><span class='va'>file_01</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='co'># populated with objects</span></span>
-<span><span class='va'>l</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>file_01</span>, <span class='va'>file_02</span>, <span class='va'>file_03</span><span class='op'>)</span> </span></code></pre>
+<span><span class='va'>table10</span> <span class='op'>&lt;-</span> <span class='fu'>clean_table</span><span class='op'>(</span><span class='va'>file_02</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>table11</span> <span class='op'>&lt;-</span> <span class='fu'>clean_table</span><span class='op'>(</span><span class='va'>file_03</span><span class='op'>)</span></span></code></pre>
 </div>
 </div>
+<p>But that would be redundant! Imagine if we were reading in 15 of those csvs! There would be extra lines of code and as many extra variable names in your global environment to keep track of. Let’s see how loops paired with lists can help us!</p>
 <h1 id="anatomy">Anatomy</h1>
-<p>There’s several layers to a list, like a container within a container. To extract a specific element’s data, use double brackets instead one.</p>
+<p>A <code>for</code> loop has three parts:</p>
+<ol type="1">
+<li>The Output: where the stuff will be stored</li>
+<li>The Sequence: code within <code>()</code> that shows what to loop over</li>
+<li>The Body: code within <code>{}</code> that does the work</li>
+</ol>
+<h2 id="sequence">Sequence</h2>
+<p>The sequence lies within the <code>()</code>. It will follow this structure:
+([variable name of your choice] in [list or vector])</p>
+<p>The sequence tells the machine what to loop over. The variable name of your choice will represent a single element within the list or vector in a loop.</p>
+<p>In the example below, with every iteration, <code>df</code> will be a counter and represent a different data frame in <code>l</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>l</span> <span class='co'># the whole list and all its elements</span></span>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>l</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>file_01</span>, <span class='va'>file_02</span>, <span class='va'>file_03</span><span class='op'>)</span></span>
 <span></span>
-<span><span class='va'>l</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span> <span class='co'># the first element in its container; contains the name/index of element and the data</span></span>
-<span></span>
-<span><span class='va'>l</span><span class='op'>[[</span><span class='fl'>1</span><span class='op'>]</span><span class='op'>]</span> <span class='co'># the data of the first element</span></span></code></pre>
+<span><span class='co'># for every data frame (df) in list (l)...</span></span>
+<span><span class='kw'>for</span><span class='op'>(</span><span class='va'>df</span> <span class='kw'>in</span> <span class='va'>l</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span>  </span>
+<span><span class='op'>}</span></span></code></pre>
 </div>
 </div>
-<p>Hadley Wickham’s pepper analogy</p>
-<p><img src="slides/images/hwickham-pepper.png" /></p>
-<h2 id="names">Names</h2>
-<p>Like vectors, lists can also be named</p>
+<p>Try printing the <code>head()</code> of each data frame in our list</p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>l</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>'table9'</span>, <span class='st'>'table10'</span>, <span class='st'>'table11'</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>l</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>file_01</span>, <span class='va'>file_02</span>, <span class='va'>file_03</span><span class='op'>)</span> </span>
+<span></span>
+<span><span class='kw'>for</span><span class='op'>(</span><span class='va'>df</span> <span class='kw'>in</span> <span class='va'>l</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='op'>}</span></span></code></pre>
 </div>
 </div>
-<p>Now you can also access the data of a specific element by name using $ or [[]]</p>
+<p>Try printing a version of each data frame with <code>clean_table()</code></p>
 <div class="layout-chunk" data-layout="l-body">
 <div class="sourceCode">
-<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>l</span><span class='op'>$</span><span class='va'>table9</span></span>
-<span></span>
-<span><span class='va'>l</span><span class='op'>[[</span><span class='st'>'table9'</span><span class='op'>]</span><span class='op'>]</span></span>
-<span></span>
-<span><span class='co'># saving processes back into the list</span></span>
-<span><span class='va'>l</span><span class='op'>$</span><span class='va'>table9</span> <span class='op'>&lt;-</span> <span class='va'>l</span><span class='op'>$</span><span class='va'>table9</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>cnty</span> <span class='op'>==</span> <span class='st'>'033'</span><span class='op'>)</span></span></code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'>for</span><span class='op'>(</span><span class='va'>df</span> <span class='kw'>in</span> <span class='va'>l</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='fu'>clean_table</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='op'>}</span></span></code></pre>
 </div>
 </div>
-<p>Now if you extract an element with only one <code>[]</code> like <code>l[1]</code>, you can see that it’s a container holding the name of the element and the data itself.</p>
-<p><img src="slides/images/list-one-bracket.png" /></p>
+<h2 id="output">Output</h2>
+<p>Now instead of printing stuff, let’s store stuff in a list!</p>
+<p>A way to use both lists and loops is to read data. Let’s create a loop to read-in csvs 1 through 11 and store them into a list.</p>
+<ul>
+<li>Initiate the Output (<code>dfs</code>) to store the end result (data frames from csvs)</li>
+<li>Construct the sequence you’ll be looping over (<code>csv</code>) (file names of csvs)</li>
+<li>Read csv (<code>t</code>)</li>
+</ul>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>dfs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>csv</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>'Table'</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span>, <span class='st'>'.csv'</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='kw'>for</span><span class='op'>(</span><span class='va'>c</span> <span class='kw'>in</span> <span class='va'>csv</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span>  <span class='va'>t</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>'data'</span>, <span class='st'>'050'</span>, <span class='va'>c</span><span class='op'>)</span><span class='op'>)</span></span>
+<span>  <span class='va'>dfs</span><span class='op'>[[</span><span class='va'>c</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='va'>t</span></span>
+<span><span class='op'>}</span></span></code></pre>
+</div>
+</div>
+<p>Rename the elements in the list</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/names.html'>names</a></span><span class='op'>(</span><span class='va'>dfs</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste0</a></span><span class='op'>(</span><span class='st'>'Table'</span>, <span class='fl'>1</span><span class='op'>:</span><span class='fl'>11</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<h1 id="put-it-all-together">Put it all together</h1>
+<p>Edit the loop so that we clean the tables as we’re reading in the csvs.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'>for</span><span class='op'>(</span><span class='va'>c</span> <span class='kw'>in</span> <span class='va'>csv</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span>  <span class='va'>t</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://readr.tidyverse.org/reference/read_delim.html'>read_csv</a></span><span class='op'>(</span><span class='fu'><a href='https://here.r-lib.org//reference/here.html'>here</a></span><span class='op'>(</span><span class='st'>'data'</span>, <span class='st'>'050'</span>, <span class='va'>c</span><span class='op'>)</span><span class='op'>)</span></span>
+<span>  <span class='va'>ct</span> <span class='op'>&lt;-</span> <span class='fu'>clean_table</span><span class='op'>(</span><span class='va'>t</span><span class='op'>)</span></span>
+<span>  <span class='va'>dfs</span><span class='op'>[[</span><span class='va'>c</span><span class='op'>]</span><span class='op'>]</span> <span class='op'>&lt;-</span> <span class='va'>ct</span></span>
+<span><span class='op'>}</span></span></code></pre>
+</div>
+</div>
+<p>With loops and a list to store the output, we’ve removed code redundancy. Instead of calling <code>clean_table()</code> for every table in our list, it just required editing a couple lines within the loop to make that adjustment.</p>
+<h2 id="sequencing-alternatives">Sequencing alternatives</h2>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='kw'>for</span><span class='op'>(</span><span class='va'>df</span> <span class='kw'>in</span> <span class='fl'>1</span><span class='op'>:</span><span class='fu'><a href='https://rdrr.io/r/base/length.html'>length</a></span><span class='op'>(</span><span class='va'>l</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span>  </span>
+<span><span class='op'>}</span></span></code></pre>
+</div>
+</div>
+<h1 id="alter-the-flow">Alter the Flow</h1>
+<h2 id="break">Break</h2>
+<h2 id="next">Next</h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
 <!--radix_placeholder_article_footer-->
 <!--/radix_placeholder_article_footer-->

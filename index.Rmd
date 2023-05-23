@@ -7,9 +7,10 @@ site: distill::distill_website
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
-library(emo)
 
 ```
+
+It's never too late to start organizing code! It's a step towards cleaner scripts which not only benefit the machines that execute it but the humans who are reading and understanding the logic. We'll go over three essentials of programming (in R) that can help us remove redundant code and efficiently process and store multiple objects. With these tools: functions, lists, and loops, your scripts can become more concise and easier to navigate.
 
 ```{r embed-xaringan, echo=FALSE, fig.cap="[Slides](slides/index.html)"}
 xaringanExtra::embed_xaringan(url = "slides/slides.html", ratio = "16:9")
@@ -21,5 +22,5 @@ Shortcut Keys
 - `f`: full-screen
 - `Esc`: exit full-screen
 - `o`: tile view
-- `r ji('left_arrow')` `r ji('right_arrow')`: advance slide
+- left or right arrow: advance slide
 </aside>

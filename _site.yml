@@ -14,5 +14,6 @@ navbar:
           href: functions.html
         - text: "Lists"
           href: lists.html
-          
+        - text: "Loops"
+          href: loops.html
 output: distill::distill_article

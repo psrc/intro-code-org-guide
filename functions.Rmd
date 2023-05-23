@@ -38,7 +38,7 @@ Suppose we'd like to do some cleaning to each CHAS table in the same manner. Let
 
   - filter for PSRC counties
   - pivot longer (so columns that start with 'T' are not across the table)
-  - dissect the column containing the former 'T...' hearders into three columns
+  - dissect the column containing the former 'T...' headers into three columns
       - create 'table' field
       - create a 'type' field to identify whether values are 'est' or 'moe'
       - create a 'sort' field
@@ -64,9 +64,9 @@ clean_table <- function(table) {
     pivot_longer(cols = str_subset(colnames(table), "^T.*"), 
                  names_to = 'header', 
                  values_to = 'value') %>% 
-    mutate(table = str_extract(header, "^T\\d*(?=_)"),
-           type = str_extract(header, "(?<=_)\\w{3}"),
-           sort = str_extract(header, "\\d+$"))
+    mutate(table = str_extract(header, "^T\\d*(?=_)"), # string starting with T and numeric digits followed by _
+           type = str_extract(header, "(?<=_)\\w{3}"), # 3 letters preceded by _
+           sort = str_extract(header, "\\d+$")) # last numeric digits at the end of the string
 }
 ```
 

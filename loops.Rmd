@@ -1,7 +1,7 @@
 ---
 title: "Loops"
 description: |
-  Let the machine do it!
+  Over and Over again...
 
 output: 
   distill::distill_article:
@@ -24,7 +24,7 @@ table10 <- clean_table(file_02)
 table11 <- clean_table(file_03)
 ```
 
-But that would be redundant! There would be three extra lines of code and three extra variable names in your global environment to keep track of.
+But that would be redundant! Imagine if we were reading in 15 of those csvs! There would be extra lines of code and as many extra variable names in your global environment to keep track of. Let's see how loops paired with lists can help us!
 
 # Anatomy
 
@@ -37,9 +37,9 @@ A `for` loop has three parts:
 ## Sequence
 
 The sequence lies within the `()`. It will follow this structure:
-(<variable name of your choice> in <list or vector>)
+([variable name of your choice] in [list or vector])
 
-The sequence tells the machine what to loop over. The variable name will represent a single element within the list or vector.
+The sequence tells the machine what to loop over. The variable name of your choice will represent a single element within the list or vector in a loop.
 
 In the example below, with every iteration, `df` will be a counter and represent a different data frame in `l`
 
@@ -72,14 +72,16 @@ for(df in l) {
 ```
 
 ## Output
+
 Now instead of printing stuff, let's store stuff in a list!
 
-A way to use both lists and loops is to read in data. Let's create a loop to read-in csvs 1 through 11 and store them into a list.
+A way to use both lists and loops is to read data. Let's create a loop to read-in csvs 1 through 11 and store them into a list.
 
 - Initiate the Output (`dfs`) to store the end result (data frames from csvs)
 - Construct the sequence you'll be looping over (`csv`) (file names of csvs)
 - Read csv (`t`)
-```{r}
+
+```{r eval=FALSE}
 dfs <- list()
 
 csv <- paste0('Table', 1:11, '.csv')
@@ -90,11 +92,29 @@ for(c in csv) {
 }
 ```
 
+Rename the elements in the list
+
+```{r eval=FALSE}
+names(dfs) <- paste0('Table', 1:11)
+```
+
+# Put it all together
+
+Edit the loop so that we clean the tables as we're reading in the csvs.
+
+```{r eval=FALSE}
+for(c in csv) {
+  t <- read_csv(here('data', '050', c))
+  ct <- clean_table(t)
+  dfs[[c]] <- ct
+}
+```
+
+With loops and a list to store the output, we've removed code redundancy. Instead of calling `clean_table()` for every table in our list, it just required editing a couple lines within the loop to make that adjustment.
 
 
 
 ## Sequencing alternatives
-
 
 ```{r eval=FALSE}
 

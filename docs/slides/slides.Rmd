@@ -15,7 +15,6 @@ output:
 
 ```{r xaringan-extra, echo=FALSE, warning=FALSE}
 library(xaringanExtra)
-library(emo)
 library(fontawesome)
 use_tile_view()
 use_panelset()
@@ -65,7 +64,7 @@ Lists
 ]
 
 .bg-near-white.b--gray.ba.bw2.br3.shadow-5.ph4.mt2[
-Loops `r ji('repeat_button')`
+Loops
 ]
 ]
 
@@ -78,6 +77,12 @@ class: inverse, center, middle
 ---
 
 ## Functions
+
+> A function is a group of commands (blocks) that you give a name so that you can use it over and over again...
+> The purpose of a function is to help you organize your code and to avoid writing the same code twice.
+>
+> `r tufte::quote_footer('--- Code.org')`
+
 
 .pull-left[
 - Can reduce repetitive code
@@ -99,7 +104,7 @@ class: inverse, center, middle
 
 - Can help reduce number of objects in the global environment
 
-- Fun when used with loops `r ji('party_popper')`
+- Fun when used with loops
 
 .pull-left[
 ### Vectors
