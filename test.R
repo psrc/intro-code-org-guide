@@ -24,7 +24,7 @@ for(i in 1:length(csv)) {
   dfs[[csv[i]]] <- ct
 }
 
-# alternative
+# alternatives
 # for(i in csv) {
 #   t <- read_csv(here('data', '050', c))
 #   ct <- clean_table(t)
