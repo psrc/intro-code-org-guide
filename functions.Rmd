@@ -32,24 +32,32 @@ my_function_name <- function() {
 
 ```
 
-# Let's create one
+# Let's create a custom function!
+
+Here's a CHAS table. Each csv will look similar to this:
+
+```{r}
+file_01 <- read_csv(here('data', '050', 'Table9.csv'))
+head(file_01, 10)
+```
+
 
 Suppose we'd like to do some cleaning to each CHAS table in the same manner. Let's create one that does the following: 
 
-  - filter for PSRC counties
+  - filter for WA state and PSRC counties
   - pivot longer (so columns that start with 'T' are not across the table)
-  - dissect the column containing the former 'T...' headers into three columns
-      - create 'table' field
+  - create 3 more columns that dissect the column containing the former 'T...' headers: 
+      - create 'table' field extracting `T` and the numbers before the underscore
       - create a 'type' field to identify whether values are 'est' or 'moe'
-      - create a 'sort' field
+      - create a 'sort' field extracting the numeric digits at the end
       
 ```{r eval=FALSE}
-# Read-in one file as a data frame
-file_01 <- read_csv(here('data', '050', 'Table9.csv'))
 
 # define the skeleton of our function
 # add table as a parameter
 clean_table <- function(table) {
+  
+  # fill it in!
   
 }
 
@@ -64,10 +72,15 @@ clean_table <- function(table) {
     pivot_longer(cols = str_subset(colnames(table), "^T.*"), 
                  names_to = 'header', 
                  values_to = 'value') %>% 
-    mutate(table = str_extract(header, "^T\\d*(?=_)"), # string starting with T and numeric digits followed by _
-           type = str_extract(header, "(?<=_)\\w{3}"), # 3 letters preceded by _
-           sort = str_extract(header, "\\d+$")) # last numeric digits at the end of the string
+    mutate(table = str_extract(header, "^T\\d*(?=_)"), 
+           type = str_extract(header, "(?<=_)\\w{3}"), 
+           sort = str_extract(header, "\\d+$")) 
 }
+
+# Regex used:
+# table: "^T\\d*(?=_)" string starting with T and numeric digits followed by _
+# type: "(?<=_)\\w{3}" 3 letters preceded by _
+# sort: "\\d+$" last numeric digits at the end of the string
 ```
 
 <aside>
