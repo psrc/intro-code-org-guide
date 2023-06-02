@@ -19,6 +19,7 @@ library(fontawesome)
 use_tile_view()
 use_panelset()
 use_tachyons()
+use_editable(expires = 1)
 ```
 
 ```{r setup, include=FALSE}
@@ -75,12 +76,6 @@ class: inverse, center, middle
 
 ## Functions
 
-> A function is a group of commands (blocks) that you give a name so that you can use it over and over again...
-> The purpose of a function is to help you organize your code and to avoid writing the same code twice.
->
-> `r tufte::quote_footer('--- Code.org')`
-
-
 .pull-left[
 - Can reduce repetitive code
 
@@ -95,15 +90,52 @@ class: inverse, center, middle
 
 ---
 
-## Let's create a function!
+### Create your function
 
 .pull-left[
-Suppose we'd like to do some cleaning to each CHAS table in the same manner. Let's create a function that when called, does the following: 
+**Defining your function**
+.can-edit[
+```{r}
+
+my_function_name <- function() {
+  
+
+  
+}
+```
+]
+]
+
+.pull-right[
+**Call your function**
+.can-edit[
+```{r}
+
+x <- my_function_name()
+
+```
+
+]
+]
+
+---
+
+class: inverse, center, middle
+
+# Exercise
+
+---
+
+### Exercise (5 minutes)
+
+.pull-left[
+Let's create a function that when called, does the following to any CHAS table: 
 
 - filter for WA state and PSRC counties
 
 - pivot longer (so columns that start with **T** are not across the table, but contained in a single column)
 
+Extra credit:
 - create 3 more columns that dissect the column containing the former **T...** headers: 
     - create **table** field extracting `T` and the numbers before the underscore
     
@@ -112,16 +144,26 @@ Suppose we'd like to do some cleaning to each CHAS table in the same manner. Let
     - create **sort** field extracting the numeric digits from the end
 ]
 
+
 .pull-right[
+.can-edit[
 ```{r eval=FALSE}
 
 clean_table <- function(table) {
-  table %>% 
+ 
      
 }
 
 ```
 ]
+]
+
+---
+
+class: inverse, center, middle
+
+# Lists
+
 ---
 
 # Lists
@@ -136,7 +178,7 @@ clean_table <- function(table) {
 ### Vectors
 
 - Vectors group individual values of the same data type 
-  - `c('a', 'b', 'c)`
+  - `c('a', 'b', 'c')`
 
 - It will force everything to be the same data type and will try to flatten more complex types (e.g. data frames)
 ]
@@ -154,13 +196,19 @@ clean_table <- function(table) {
 
 # Accessing a list
 
+.pull-left[
 Hadley Wickham's pepper example<sup>1</sup>:
 
 1. `my_list`: The whole list and all its elements
-2. `my_list[1]`: A container of the first element (name of element and the data/value)
-3. `my_list[[1]]`: The actual data
 
-![](https://r4ds.hadley.nz/diagrams/pepper.png)
+2. `my_list[1]`: A container of the first element (name of element and the data/value)
+
+3. `my_list[[1]]`: The actual data
+]
+
+.pull-right[
+![](images/hwickham-pepper.png)
+]
 
 .footnote[[1] https://r4ds.hadley.nz/base-r#lists]
 

@@ -10,6 +10,11 @@
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"a4d107f08b4f4158a78a2d8f9d812e0a","expires":1}</script>
+    <script src="libs/himalaya/himalaya.js"></script>
+    <script src="libs/js-cookie/js.cookie.js"></script>
+    <link href="libs/editable/editable.css" rel="stylesheet" />
+    <script src="libs/editable/editable.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
   </head>
   <body>
@@ -74,12 +79,6 @@ class: inverse, center, middle
 
 ## Functions
 
-&gt; A function is a group of commands (blocks) that you give a name so that you can use it over and over again...
-&gt; The purpose of a function is to help you organize your code and to avoid writing the same code twice.
-&gt;
-&gt; &lt;footer&gt;--- Code.org&lt;/footer&gt;
-
-
 .pull-left[
 - Can reduce repetitive code
 
@@ -94,15 +93,51 @@ class: inverse, center, middle
 
 ---
 
-## Let's create a function!
+### Create your function
 
 .pull-left[
-Suppose we'd like to do some cleaning to each CHAS table in the same manner. Let's create a function that when called, does the following: 
+**Defining your function**
+.can-edit[
+
+```r
+my_function_name &lt;- function() {
+  
+
+  
+}
+```
+]
+]
+
+.pull-right[
+**Call your function**
+.can-edit[
+
+```r
+x &lt;- my_function_name()
+```
+
+]
+]
+
+---
+
+class: inverse, center, middle
+
+# Exercise
+
+---
+
+### Exercise (5 minutes)
+
+.pull-left[
+Let's create a function that when called, does the following to any CHAS table: 
 
 - filter for WA state and PSRC counties
 
 - pivot longer (so columns that start with **T** are not across the table, but contained in a single column)
 
+Extra credit:
 - create 3 more columns that dissect the column containing the former **T...** headers: 
     - create **table** field extracting `T` and the numbers before the underscore
     
@@ -111,15 +146,25 @@ Suppose we'd like to do some cleaning to each CHAS table in the same manner. Let
     - create **sort** field extracting the numeric digits from the end
 ]
 
+
 .pull-right[
+.can-edit[
 
 ```r
 clean_table &lt;- function(table) {
-  table %&gt;% 
+ 
      
 }
 ```
 ]
+]
+
+---
+
+class: inverse, center, middle
+
+# Lists
+
 ---
 
 # Lists
@@ -134,7 +179,7 @@ clean_table &lt;- function(table) {
 ### Vectors
 
 - Vectors group individual values of the same data type 
-  - `c('a', 'b', 'c)`
+  - `c('a', 'b', 'c')`
 
 - It will force everything to be the same data type and will try to flatten more complex types (e.g. data frames)
 ]
@@ -152,13 +197,19 @@ clean_table &lt;- function(table) {
 
 # Accessing a list
 
+.pull-left[
 Hadley Wickham's pepper example&lt;sup&gt;1&lt;/sup&gt;:
 
 1. `my_list`: The whole list and all its elements
-2. `my_list[1]`: A container of the first element (name of element and the data/value)
-3. `my_list[[1]]`: The actual data
 
-![](https://r4ds.hadley.nz/diagrams/pepper.png)
+2. `my_list[1]`: A container of the first element (name of element and the data/value)
+
+3. `my_list[[1]]`: The actual data
+]
+
+.pull-right[
+![](images/hwickham-pepper.png)
+]
 
 .footnote[[1] https://r4ds.hadley.nz/base-r#lists]
 

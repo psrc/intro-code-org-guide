@@ -17,11 +17,13 @@ R and the RStudio IDE are required. See the first module on [R Basics](https://p
 
 # Session Files on Local Drive
 
-1. Clone the repo `` onto your local drive.
+1. Clone the repo [https://github.com/psrc/intro-code-org](https://github.com/psrc/intro-code-org) onto your local drive.
 
 2. Download the CHAS zip file of the `2015-2019 ACS 5-year average data` for `Census places` from [here](https://www.huduser.gov/portal/datasets/cp.html#data_2006-2019). 
 
-Extract the files into in the `data` sub-directory of the cloned repo.
+  - Extract the zipfile in the `data` sub-directory of the cloned repo.
+  
+  - All data files will be found in `data/050`.
 
 ![](slides/images/chas-download.png)
 
@@ -55,9 +57,18 @@ If the following packages have not been installed, install the following by runn
 Some may have already been installed from previous modules. You can adapt the code snippet accordingly.
 </aside>
 
-```{r eval=FALSE, include=TRUE}
+```{r eval=FALSE, echo=TRUE}
 install.packages(c('tidyverse', 'here'))
 ```
 
+# Test
+
+Test to make sure you can read csvs from the CHAS dataset that was downloaded. Adjust the line below according to how you've stored your files in the `data` sub-directory.
+
+```{r eval=FALSE, echo=TRUE}
+
+file_01 <- read_csv(here('data', '050', 'Table9.csv'))
+
+```
 
 

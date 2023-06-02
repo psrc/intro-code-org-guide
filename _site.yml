@@ -1,5 +1,5 @@
-name: "."
-title: "Code Organization"
+name: "intro-code-org-guide"
+title: "Intro to Code Organization"
 description: |
   Code Organization
 output_dir: "docs"
@@ -8,6 +8,8 @@ navbar:
   right:
     - text: "Home"
       href: index.html
+    - text: "Pre-work"
+      href: prework.html
     - text: "Tools for Organizing"
       menu:
         - text: "Functions"
@@ -16,4 +18,7 @@ navbar:
           href: lists.html
         - text: "Loops"
           href: loops.html
-output: distill::distill_article
+output: 
+  distill::distill_article:
+    highlight: tango
+    highlight_downlit: true
