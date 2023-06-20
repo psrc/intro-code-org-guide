@@ -128,15 +128,16 @@ class: inverse, center, middle
 
 ### Exercise (5 minutes)
 
-.pull-left[
+.panelset[
+.panel[.panel-name[Exercise]
 Let's create a function that when called, does the following to any CHAS table: 
+.pull-left[
+- Filter for WA state and PSRC counties
 
-- filter for WA state and PSRC counties
-
-- pivot longer (so columns that start with **T** are not across the table, but contained in a single column)
+- Pivot longer (so columns that start with **T** are not across the table, but contained in a single column)
 
 Extra credit:
-- create 3 more columns that dissect the column containing the former **T...** headers: 
+- Create 3 more columns that dissect the column containing the former **T...** headers: 
     - create **table** field extracting `T` and the numbers before the underscore
     
     - create **type** field extracting 'est' or 'moe'
@@ -156,6 +157,21 @@ clean_table <- function(table) {
 
 ```
 ]
+]
+
+]
+
+.panel[.panel-name[End Output]
+![](images/chas-end-output.png)
+]
+
+.panel[.panel-name[Resources]
+
+- [Stringr](https://stringr.tidyverse.org/)
+- [Stringr Cheat Sheet](https://github.com/rstudio/cheatsheets/blob/main/strings.pdf)
+
+]
+
 ]
 
 ---

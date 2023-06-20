@@ -128,9 +128,10 @@ class: inverse, center, middle
 
 ### Exercise (5 minutes)
 
-.pull-left[
+.panelset[
+.panel[.panel-name[Exercise]
 Let's create a function that when called, does the following to any CHAS table: 
-
+.pull-left[
 - Filter for WA state and PSRC counties
 
 - Pivot longer (so columns that start with **T** are not across the table, but contained in a single column)
@@ -156,6 +157,21 @@ clean_table <- function(table) {
 
 ```
 ]
+]
+
+]
+
+.panel[.panel-name[End Output]
+![](images/chas-end-output.png)
+]
+
+.panel[.panel-name[Resources]
+
+- [Stringr](https://stringr.tidyverse.org/)
+- [Stringr Cheat Sheet](https://github.com/rstudio/cheatsheets/blob/main/strings.pdf)
+
+]
+
 ]
 
 ---

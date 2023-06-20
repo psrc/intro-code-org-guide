@@ -19,7 +19,7 @@ R and the RStudio IDE are required. See the first module on [R Basics](https://p
 
 1. Clone the repo [https://github.com/psrc/intro-code-org](https://github.com/psrc/intro-code-org) onto your local drive.
 
-2. Download the CHAS zip file of the `2015-2019 ACS 5-year average data` for `Census places` from [here](https://www.huduser.gov/portal/datasets/cp.html#data_2006-2019). 
+2. Download the CHAS zip file of the `2015-2019 ACS 5-year average data` for `Census counties` from [here](https://www.huduser.gov/portal/datasets/cp.html#data_2006-2019). 
 
   - Extract the zipfile in the `data` sub-directory of the cloned repo.
   
@@ -31,23 +31,11 @@ Make sure that the repo and other files for the session are **on your local driv
 
 ## Open .Rproj
 
-In the RStudio IDE, open the `.Rproj` file. Project files will automatically set our working directory--in this case, the root of the  directory. No need for `setwd()` and dealing with file paths!
-
-![](images/rproj.png)
+In the RStudio IDE, open the `.Rproj` file in the repo. Project files will automatically set our working directory--in this case, the root of the  directory. No need for `setwd()` and dealing with file paths!
 
 After opening the `.Rproj` file, you'll see some changes to your IDE. Your console and `Files` pane will reflect the new working directory, and the project name is listed in the top right corner.
 
-![](images/rproj-changes.png)
-To close out of the project, click the project name at the top right corner and select `Close Project`. On the day of the session, you can access the dropdown in that area of the IDE and select ``.
-
-<div class="adjacent-image">
-<div class="image-left">
-![](images/rproj-close.png)
-</div>
-<div>
-![](images/rproj-open.png)
-</div>
-</div>
+To close out of the project, click the project name at the top right corner and select `Close Project`. On the day of the session, you can access the dropdown in that area of the IDE and select `intro-code-org`.
 
 # Install
 

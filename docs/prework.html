@@ -2149,7 +2149,7 @@ Tools for Organizing
 <h1 id="session-files-on-local-drive">Session Files on Local Drive</h1>
 <ol type="1">
 <li><p>Clone the repo <a href="https://github.com/psrc/intro-code-org">https://github.com/psrc/intro-code-org</a> onto your local drive.</p></li>
-<li><p>Download the CHAS zip file of the <code>2015-2019 ACS 5-year average data</code> for <code>Census places</code> from <a href="https://www.huduser.gov/portal/datasets/cp.html#data_2006-2019">here</a>.</p></li>
+<li><p>Download the CHAS zip file of the <code>2015-2019 ACS 5-year average data</code> for <code>Census counties</code> from <a href="https://www.huduser.gov/portal/datasets/cp.html#data_2006-2019">here</a>.</p></li>
 </ol>
 <ul>
 <li><p>Extract the zipfile in the <code>data</code> sub-directory of the cloned repo.</p></li>
@@ -2158,19 +2158,9 @@ Tools for Organizing
 <p><img src="slides/images/chas-download.png" /></p>
 <p>Make sure that the repo and other files for the session are <strong>on your local drive</strong>. If they are on PSRC’s network, you may experience extreme sluggishness when using a <code>.Rproj</code> file.</p>
 <h2 id="open-.rproj">Open .Rproj</h2>
-<p>In the RStudio IDE, open the <code>.Rproj</code> file. Project files will automatically set our working directory–in this case, the root of the directory. No need for <code>setwd()</code> and dealing with file paths!</p>
-<p><img src="images/rproj.png" /></p>
+<p>In the RStudio IDE, open the <code>.Rproj</code> file in the repo. Project files will automatically set our working directory–in this case, the root of the directory. No need for <code>setwd()</code> and dealing with file paths!</p>
 <p>After opening the <code>.Rproj</code> file, you’ll see some changes to your IDE. Your console and <code>Files</code> pane will reflect the new working directory, and the project name is listed in the top right corner.</p>
-<p><img src="images/rproj-changes.png" />
-To close out of the project, click the project name at the top right corner and select <code>Close Project</code>. On the day of the session, you can access the dropdown in that area of the IDE and select ``.</p>
-<div class="adjacent-image">
-<div class="image-left">
-<p><img src="images/rproj-close.png" /></p>
-</div>
-<div>
-<p><img src="images/rproj-open.png" /></p>
-</div>
-</div>
+<p>To close out of the project, click the project name at the top right corner and select <code>Close Project</code>. On the day of the session, you can access the dropdown in that area of the IDE and select <code>intro-code-org</code>.</p>
 <h1 id="install">Install</h1>
 <p>If the following packages have not been installed, install the following by running the following code snippet in the console of your RStudio IDE. Ignore any warnings regarding <code>Rtools</code> and if you are asked to install from sources which needs compilation, click ‘No’.</p>
 <aside>
