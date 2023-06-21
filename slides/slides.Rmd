@@ -230,6 +230,12 @@ Hadley Wickham's pepper example<sup>1</sup>:
 
 ---
 
+class: inverse, center, middle
+
+# Loops
+
+---
+
 # Loops
 
 - Reduce redundant code when applying the same actions to multiple things
@@ -239,6 +245,10 @@ Examples:
 
 - Iterate through a list of files, consolidating into one data frame
 
+- Reading in or exporting files
+
+- Printing
+
 .flex.justify-center[
 <img src="images/recycle.svg" width="60px" height="60px">
 
@@ -246,6 +256,20 @@ Examples:
 
 <img src="images/list.svg" width="60px" height="60px">
 ]    
+---
+
+## Loop Structure
+
+**Set-up**
+.can-edit[
+```{r eval=FALSE}
+
+for(<iterator> in <list or vector>) {
+  
+}
+```
+]
+
 ---
 
 
