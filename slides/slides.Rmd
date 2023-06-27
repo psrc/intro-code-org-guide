@@ -202,7 +202,7 @@ class: inverse, center, middle
 .pull-right[
 ### Lists
 - Lists can store different objects or individual values 
-  - `list('a', my_dataframe, another_list)`
+  - `list('a', my_dataframe, another_list, f(x))`
 
 - Stores any types (or a mix of types) and retains their structure.
 
@@ -236,26 +236,36 @@ class: inverse, center, middle
 
 ---
 
+## Reduce Redundancy
+```{r eval=FALSE}
+
+table9 <- clean_table(file_01)
+
+table10 <- clean_table(file_02)
+
+table11 <- clean_table(file_03)
+```
+
+
+---
+
 # Loops
 
-- Reduce redundant code when applying the same actions to multiple things
+- Performs repetitive tasks in a specific area of the script
 
-Examples: 
+  - `for`: repeats for a defined number of times
+  
+  - `while`: repeats as long as a condition is met
+
+**Examples**: 
 - Iterate through a list of your objects applying the same changes
 
 - Iterate through a list of files, consolidating into one data frame
 
-- Reading in or exporting files
+- Reading in/exporting files
 
-- Printing
+- Printing visuals or data
 
-.flex.justify-center[
-<img src="images/recycle.svg" width="60px" height="60px">
-
-.mh3[<img src="images/plus.svg" width="40px" height="40px">]
-
-<img src="images/list.svg" width="60px" height="60px">
-]    
 ---
 
 ## Loop Structure
@@ -269,6 +279,19 @@ for(<iterator> in <list or vector>) {
 }
 ```
 ]
+
+- The iterator can be named anything that makes sense to you
+
+---
+
+# What's Next?
+
+Loops aren't always the most efficient way to perform repetitive tasks. 
+
+- Members of the `apply` family 
+
+- The `purrr` package -- "functions to replace `for` loops that is more succinct and easier to read".
+
 
 ---
 
