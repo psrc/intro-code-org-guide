@@ -10,7 +10,7 @@
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"ceb9e9647c324077aedd851c8c55168a","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"a824d129a92f44b597d66d37f34a78c2","expires":1}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -257,6 +257,8 @@ table11 &lt;- clean_table(file_03)
   - `for`: repeats for a defined number of times
   
   - `while`: repeats as long as a condition is met
+  
+  - `repeat`: repeats indefinitely until a `break` statement
 
 **Examples**: 
 - Iterate through a list of your objects applying the same changes
@@ -285,9 +287,19 @@ for(&lt;iterator&gt; in &lt;list or vector&gt;) {
 
 ---
 
+## Alter the flow
+
+In an `if` statement in the loop, the following can alter the sequence
+
+- `break`: to exit out of the loop completely
+
+- `next`: to exit out of the current iteration and move to the next element 
+
+---
+
 # What's Next?
 
-Loops aren't always the most efficient way to perform repetitive tasks. 
+Loops aren't always the most efficient way to perform repetitive tasks
 
 - Members of the `apply` family 
 

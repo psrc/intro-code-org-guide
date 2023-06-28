@@ -256,6 +256,8 @@ table11 <- clean_table(file_03)
   - `for`: repeats for a defined number of times
   
   - `while`: repeats as long as a condition is met
+  
+  - `repeat`: repeats indefinitely until a `break` statement
 
 **Examples**: 
 - Iterate through a list of your objects applying the same changes
@@ -284,9 +286,19 @@ for(<iterator> in <list or vector>) {
 
 ---
 
+## Alter the flow
+
+In an `if` statement in the loop, the following can alter the sequence
+
+- `break`: to exit out of the loop completely
+
+- `next`: to exit out of the current iteration and move to the next element 
+
+---
+
 # What's Next?
 
-Loops aren't always the most efficient way to perform repetitive tasks. 
+Loops aren't always the most efficient way to perform repetitive tasks
 
 - Members of the `apply` family 
 
