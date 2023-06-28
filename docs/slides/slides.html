@@ -10,7 +10,7 @@
     <link href="libs/panelset/panelset.css" rel="stylesheet" />
     <script src="libs/panelset/panelset.js"></script>
     <link href="libs/tachyons/tachyons.min.css" rel="stylesheet" />
-    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"a824d129a92f44b597d66d37f34a78c2","expires":1}</script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"aede16cf94894bbfbc3007273b40fb46","expires":1}</script>
     <script src="libs/himalaya/himalaya.js"></script>
     <script src="libs/js-cookie/js.cookie.js"></script>
     <link href="libs/editable/editable.css" rel="stylesheet" />
@@ -85,6 +85,20 @@ class: inverse, center, middle
 - Even a one-time use function is a good way to break up code
 
 - A mini environment within the function. Variable names used inside the function won't affect global environment variables. Less names to think or keep track of!
+
+
+```r
+x &lt;- 3 # global env 'x'
+
+my_function &lt;- function(number) {
+  
+  x &lt;- number + 10 # function env 'x'
+  
+}
+
+y &lt;- my_function(10)
+```
+
 ]
 
 .pull-right[

@@ -82,6 +82,21 @@ class: inverse, center, middle
 - Even a one-time use function is a good way to break up code
 
 - A mini environment within the function. Variable names used inside the function won't affect global environment variables. Less names to think or keep track of!
+
+```{r eval=FALSE}
+
+x <- 3 # global env 'x'
+
+my_function <- function(number) {
+  
+  x <- number + 10 # function env 'x'
+  
+}
+
+y <- my_function(10)
+
+```
+
 ]
 
 .pull-right[
